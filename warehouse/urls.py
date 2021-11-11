@@ -18,5 +18,7 @@ from django.urls import path,include
 from parcelmanagement.views import test_response
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+
     path('przesylka/', include('parcelmanagement.urls')),
 ]

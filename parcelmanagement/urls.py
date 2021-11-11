@@ -1,8 +1,9 @@
 
 from django.urls import path
-from parcelmanagement.views import test_response
+from parcelmanagement.views import test_response,home
 urlpatterns = [
-    path('test/',test_response),
+    path('home/',home),
+    path('home/parcels',test_response),
 
 
 ]

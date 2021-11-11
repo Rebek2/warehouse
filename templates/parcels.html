@@ -1,17 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Podgląd przesyłki</title>
-</head>
-<body>
-<h2>ostatnio dodane przesyłki</h2>
+{% extends 'index.html' %}
+
+
+{% block content %}
+    <center>
+<h2>ostatnio dodane przesyłki   </h2>
     {% for parcel in Przesyłki %}
     <h2>{{ parcel }}</h2>
 
     {% endfor %}
+  </center>
+{% endblock %}
 </body>
 </html>
