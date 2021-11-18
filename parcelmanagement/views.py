@@ -16,11 +16,11 @@ def dodaj(request):
         if form.is_valid():
 
             form.save()
-            return render(request,'nadanie.html',{'form':form},)
 
+        return render(request, 'nadanie.html', {'form': form}, )
     else:
         form = ParcelForm()
-    return render(request, 'nadanie.html', {'form': form},)
+        return render(request, 'nadanie.html', {'form': form},)
 
 
 

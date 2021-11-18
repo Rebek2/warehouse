@@ -1,16 +1,22 @@
 {% extends 'index.html' %}
 
-<center>
+
 {% block content %}
 
-<h2>Dodaj przesyłkę  </h2>
+
+    <center>
+
+    <h3>Dodaj przesyłke</h3>
 <form action = '' method = "POST">
 
         {% csrf_token %}
+    <center>
     {{ form }}
+
     <input type = 'submit'>
+    </center>
 </form>
-  </center>
+
 
 {% endblock %}
 </body>

@@ -5,4 +5,4 @@ from .models import Parcel,Customer
 class ParcelForm(forms.ModelForm):
     class Meta:
         model = Parcel
-        fields='__all__'
+        fields=('price','product','Receiver','Sender','description')
