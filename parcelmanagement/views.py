@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from .forms import ParcelForm
 
 from .models import Parcel,Customer,ParcelStatus,Employee
+
+#Testowanie views
 def home(request):
     return render(request,'index.html')
 def test_response(request):
@@ -10,6 +12,9 @@ def test_response(request):
     return render(request,'parcels.html',{'Przesyłki':wszystkie})
 
 
+
+#Dodawanie/nadawanie przesyłek,
+# może jakis redirect po nadaniu na wyświetlanie danych przesyłki(numer itp)??
 def dodaj(request):
     if request.method == 'POST':
         form = ParcelForm(request.POST)
