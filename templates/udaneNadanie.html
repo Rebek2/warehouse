@@ -1,0 +1,12 @@
+
+{% extends 'index.html' %}
+
+{% block content %}
+    <center>
+<h2>Twój numer przesyłki to:</h2>
+        <h2>{{ parcel1.parcelnumber }}</h2>
+    <h3> Nadano: {{parcel1.created}}</h3>
+  </center>
+{% endblock %}
+</body>
+</html>

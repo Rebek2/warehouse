@@ -20,5 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
 
-    path('przesylka/', include('parcelmanagement.urls')),
+    path('', include('parcelmanagement.urls')),
 ]

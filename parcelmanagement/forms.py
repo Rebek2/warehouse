@@ -9,3 +9,7 @@ class ParcelForm(forms.ModelForm):
     class Meta:
         model = Parcel
         fields=('price','product','Receiver','Sender','description')
+
+
+class SearchForm(forms.Form):
+    search = forms.CharField(max_length=80)

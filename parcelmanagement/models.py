@@ -1,7 +1,7 @@
 import uuid
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.urls import reverse
 
 #Model klienta - może to być nadawca albo odbiorca w zależności,
 # gdzie ulokowany jest w relacji z modelem Parcel
@@ -29,7 +29,7 @@ class ParcelStatus(models.Model):
                      ("Zniszczona całkowicie","Zniszczona całkowicie"),
                      ("Dostarczona","Dostarczona"),
                      ("Błąd adresu","Błąd adresu"),
-                     ("Pozostawiona na magazynie","Pozostawiona na magazynie"),
+                     ("Pozostawiona w magazynie","Pozostawiona w magazynie"),
                      ("W trakcie wyjaśniania","W trakcie wyjaśniania",))
 
     status_c = models.CharField(max_length=300,choices=STATUS_CHOICE,default = "Nadano")
@@ -55,6 +55,14 @@ class Parcel(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     class Meta:
         ordering = ('-created',)
+
+
+
+    def get_absolute_url(self):
+        return reverse('warehouse:dodaj',
+                       args = [self.parcelnumber,
+                               self.created])
+
 
     def __str__(self):
         return (str(self.parcelnumber))

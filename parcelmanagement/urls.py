@@ -1,10 +1,12 @@
 
 from django.urls import path
-from parcelmanagement.views import test_response,home,dodaj
+from . import views
 urlpatterns = [
-    path('home/',home),
-    path('home/parcels',test_response),
-    path('nadaj/',dodaj),
+    path('home/',views.home),
+    path('parcels/',views.test_response),
+    path('nadaj/',views.dodaj),
+    path('nadano/<str:number>/<int:pk>/',views.udaneNadanie,name = 'udaneNadanie'),
+    path('szukaj/',views.search,name='search'),
 
 
 ]
