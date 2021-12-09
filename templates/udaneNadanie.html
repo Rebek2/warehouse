@@ -5,7 +5,22 @@
     <center>
 <h2>Twój numer przesyłki to:</h2>
         <h2>{{ parcel1.parcelnumber }}</h2>
-    <h3> Nadano: {{parcel1.created}}</h3>
+    <h2> Nadano: {{parcel1.created}}</h2>
+        <h2>              </h2>
+        <h1> Dane odbiorcy :</h1>
+    <h3>Imię: {{ parcel1.Receiver.name }}</h3>
+    <h3>Email: {{ parcel1.Receiver.EmailAdress }}</h3>
+    <h3>Ulica: {{ parcel1.Receiver.Street }}</h3>
+    <h3>Kod pocztowy: {{ parcel1.Receiver.PostalCode }}</h3>
+    <h3>Miasto: {{ parcel1.Receiver.City }}</h3>
+<h3>"                                     "</h3>
+            <h1> Dane nadawcy:</h1>
+    <h3>Imię: {{ parcel1.Sender.name }}</h3>
+    <h3>Email: {{ parcel1.Sender.EmailAdress }}</h3>
+    <h3>Ulica: {{ parcel1.Sender.Street }}</h3>
+    <h3>Kod pocztowy: {{ parcel1.Sender.PostalCode }}</h3>
+    <h3>Miasto: {{ parcel1.Sender.City }}</h3>
+
   </center>
 {% endblock %}
 </body>

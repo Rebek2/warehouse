@@ -2,12 +2,26 @@
 
 
 {% block content %}
+
+<center>
+
+
+    <h3>Dodaj przesyłke</h3>
+<form action=""  method = "POST">
+
+        {% csrf_token %}
     <center>
-<h2>Brak przesyłki o podanym kodzie UUID:</h2>
-    <h2> {{ info }}</h2>
 
 
-  </center>
+
+        <h3>Dane nadawcy:</h3>
+        {{ form.as_ul }}
+
+    <input type = 'submit'>
+    </center>
+</form>
+</center>
+
 {% endblock %}
 </body>
 </html>

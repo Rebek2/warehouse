@@ -6,8 +6,7 @@
 <h2>Ostatnio nadane przesyłki   </h2>
     {% for parcel in Przesyłki %}
     <h2>{{ parcel }}</h2>
-
-            {{ parcel.created }}
+        {{ parcel.created }}
     {% endfor %}
   </center>
 {% endblock %}

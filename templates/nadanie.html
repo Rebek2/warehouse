@@ -3,20 +3,25 @@
 
 {% block content %}
 
+<center>
 
-    <center>
 
     <h3>Dodaj przesyłke</h3>
-<form action = '' method = "POST">
+<form  method = "POST">
 
         {% csrf_token %}
     <center>
-    {{ form }}
 
+        <h3>Dane odbiorcy:</h3>
+        {{ receiver.as_ul }}
+        <h3>Dane nadawcy:</h3>
+        {{ sender.as_ul }}
+        <h3>Opcje przesyłki:</h3>
+        {{ form.as_ul }}
     <input type = 'submit'>
     </center>
 </form>
-
+</center>
 
 {% endblock %}
 </body>

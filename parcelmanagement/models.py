@@ -6,12 +6,12 @@ from django.urls import reverse
 #Model klienta - może to być nadawca albo odbiorca w zależności,
 # gdzie ulokowany jest w relacji z modelem Parcel
 class Customer(models.Model):
-    name = models.CharField(max_length=200,null = True)
-    phone = models.CharField(max_length=11, null = True)
-    EmailAdress = models.CharField(max_length = 40, null = True)
-    Street = models.CharField(max_length = 30, null=True)
-    PostalCode = models.BigIntegerField(null=True)
-    City = models.CharField(max_length=100,null=True)
+    name = models.CharField(max_length=200)
+    phone = models.CharField(max_length=11)
+    EmailAdress = models.EmailField(blank = True)
+    Street = models.CharField(max_length = 30)
+    PostalCode = models.BigIntegerField()
+    City = models.CharField(max_length=100)
 
 
     def __str__(self):

@@ -1,15 +1,22 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Parcel,Customer
+from parcelmanagement.models import Parcel,Customer
 
 
-#Formularz do nadania przesyłki, jest do poprawy,
-# bo nie umożliwia wpisania danych klientow, a jedynie wybrania z listy
+
+
 class ParcelForm(forms.ModelForm):
     class Meta:
         model = Parcel
-        fields=('price','product','Receiver','Sender','description')
+        fields=('price','product','description')
 
+class ReceiverForm(forms.ModelForm):
+    class Meta:
+        model = Customer
+        fields='__all__'
 
-class SearchForm(forms.Form):
-    search = forms.CharField(max_length=80)
+class SenderForm(forms.ModelForm):
+    class Meta:
+        model = Customer
+        fields='__all__'
+
