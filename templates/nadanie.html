@@ -6,23 +6,18 @@
 <center>
 
 
-    <h3>Dodaj przesyłke</h3>
+    <h1>Dodaj przesyłke</h1>
 <form  method = "POST">
+    {% csrf_token %}
 
-        {% csrf_token %}
-    <center>
-
-        <h3>Dane odbiorcy:</h3>
-        {{ receiver.as_ul }}
-        <h3>Dane nadawcy:</h3>
-        {{ sender.as_ul }}
-        <h3>Opcje przesyłki:</h3>
-        {{ form.as_ul }}
+      {{ form.as_p }}
+    <h2>Odbiorca</h2>
+    {{ receiver.as_p }}
+    <h2>Nadawca</h2>
+    {{ sender.as_p }}
     <input type = 'submit'>
-    </center>
 </form>
 </center>
-
 {% endblock %}
 </body>
 </html>

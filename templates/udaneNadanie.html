@@ -5,22 +5,29 @@
     <center>
 <h2>Twój numer przesyłki to:</h2>
         <h2>{{ parcel1.parcelnumber }}</h2>
-    <h2> Nadano: {{parcel1.created}}</h2>
-        <h2>              </h2>
+ <a href = "{% url 'list' pk=parcel1.id  %}">List przewozowy</a>
+        <h6> ------------------------------------------------</h6>
         <h1> Dane odbiorcy :</h1>
     <h3>Imię: {{ parcel1.Receiver.name }}</h3>
     <h3>Email: {{ parcel1.Receiver.EmailAdress }}</h3>
     <h3>Ulica: {{ parcel1.Receiver.Street }}</h3>
     <h3>Kod pocztowy: {{ parcel1.Receiver.PostalCode }}</h3>
     <h3>Miasto: {{ parcel1.Receiver.City }}</h3>
-<h3>"                                     "</h3>
+<h1>------------------------------------------------</h1>
             <h1> Dane nadawcy:</h1>
     <h3>Imię: {{ parcel1.Sender.name }}</h3>
     <h3>Email: {{ parcel1.Sender.EmailAdress }}</h3>
     <h3>Ulica: {{ parcel1.Sender.Street }}</h3>
     <h3>Kod pocztowy: {{ parcel1.Sender.PostalCode }}</h3>
     <h3>Miasto: {{ parcel1.Sender.City }}</h3>
-
+    <h1>------------------------------------------------</h1>
+    <a href = "{% url 'dodajstatus' pk=parcel1.id number=parcel1.parcelnumber %}">Dodaj status</a>
+    <h3>Status przesyłki:</h3>
+        {% for status in statusy %}
+            <h1>------------------------------------------------</h1>
+    <h5>{{ status.status_c }} |  Data:    {{ status.dateStatus }}</h5>
+            <h6>Szczegóły : {{ status.status_details }}</h6>
+    {% endfor %}
   </center>
 {% endblock %}
 </body>

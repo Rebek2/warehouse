@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+
+
+
+<form method="POST">
+<center>
+{% csrf_token %}
+
+{{ status.as_p }}
+<input type = 'submit'>
+    </center>
+</form>
+
+
+
+{% endblock %}
+
+</body>
+</html>

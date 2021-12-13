@@ -5,7 +5,7 @@
     <center>
 <h2>Ostatnio nadane przesyłki   </h2>
     {% for parcel in Przesyłki %}
-    <h2>{{ parcel }}</h2>
+        <h2><a href = "{% url 'udaneNadanie' pk=parcel.id number=parcel.parcelnumber   %}">{{ parcel }}</a></h2>
         {{ parcel.created }}
     {% endfor %}
   </center>

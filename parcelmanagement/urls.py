@@ -7,6 +7,9 @@ urlpatterns = [
     path('nadaj/',views.dodaj,name = 'dodaj'),
     path('nadano/<str:number>/<int:pk>/',views.udaneNadanie,name = 'udaneNadanie'),
     path('szukaj/',views.search,name='search'),
+    path('dodajstatus/',views.dodaj_status,name='dodaj_status'),
+    path('dodajstatus/<int:pk>/<str:number>',views.status,name = 'dodajstatus'),
+    path('parcel_pdf/<int:pk>/',views.list_przewozowy,name = 'list'),
 
 
 

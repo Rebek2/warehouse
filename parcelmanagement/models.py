@@ -33,10 +33,12 @@ class ParcelStatus(models.Model):
                      ("W trakcie wyjaśniania","W trakcie wyjaśniania",))
 
     status_c = models.CharField(max_length=300,choices=STATUS_CHOICE,default = "Nadano")
-    status_details = models.CharField(max_length=200, null=True,blank=True)
+    status_details = models.CharField(max_length=200, blank=True)
     dateStatus = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User,on_delete=models.CASCADE)
+
     parcel_number = models.ForeignKey('Parcel', on_delete=models.CASCADE)
+    class Meta:
+        ordering = ('-dateStatus',)
     def __str__(self):
         return str(f'{self.parcel_number} {self.status_c}')
 #Model samej przesyki gdzie generowany jest numer przesyłki UUID - można później zmienić
@@ -58,10 +60,9 @@ class Parcel(models.Model):
 
 
 
-    def get_absolute_url(self):
-        return reverse('warehouse:dodaj',
-                       args = [self.parcelnumber,
-                               self.created])
+    #def get_absolute_url(self):
+        #return reverse('parcelmanagement.views.status',args = [self.parcelnumber,
+                               #self.id])
 
 
     def __str__(self):
