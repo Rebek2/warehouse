@@ -10,6 +10,7 @@ urlpatterns = [
     path('dodajstatus/',views.dodaj_status,name='dodaj_status'),
     path('dodajstatus/<int:pk>/<str:number>',views.status,name = 'dodajstatus'),
     path('parcel_pdf/<int:pk>/',views.list_przewozowy,name = 'list'),
+    path('statystyki/',views.statystyki,name='statystyki'),
 
 
 

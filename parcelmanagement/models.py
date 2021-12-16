@@ -32,7 +32,7 @@ class ParcelStatus(models.Model):
                      ("Pozostawiona w magazynie","Pozostawiona w magazynie"),
                      ("W trakcie wyjaśniania","W trakcie wyjaśniania",))
 
-    status_c = models.CharField(max_length=300,choices=STATUS_CHOICE,default = "Nadano")
+    status_c = models.CharField(max_length=300,choices=STATUS_CHOICE)
     status_details = models.CharField(max_length=200, blank=True)
     dateStatus = models.DateTimeField(auto_now_add=True)
 
@@ -51,8 +51,8 @@ class Parcel(models.Model):
     parcelnumber = models.UUIDField(default = uuid.uuid4,unique = True,editable=False)
     price = models.FloatField(null = True)
     product = models.CharField(max_length=200,null=True,choices=CATEGORY)
-    Sender = models.ForeignKey(Customer,on_delete=models.CASCADE,related_name='sender')
-    Receiver = models.ForeignKey(Customer,on_delete = models.CASCADE,related_name='receiver')
+    Sender = models.ForeignKey(Customer,on_delete=models.PROTECT,related_name='sender')
+    Receiver = models.ForeignKey(Customer,on_delete = models.PROTECT,related_name='receiver')
     description = models.CharField(max_length=300,null=True)
     created = models.DateTimeField(auto_now_add=True)
     class Meta:

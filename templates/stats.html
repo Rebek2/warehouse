@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+
+    <center>
+
+<h2>Wprowadź status aby zobaczyć ile przesyłek znajduje się o takim statusie</h2>
+        <h2>Możliwe statusy:</h2>
+        <h4>Nadano</h4>
+        <h4> W drodze</h4>
+         <h4>Uszkodzona</h4>
+         <h4>Zniszczona całkowicie</h4>
+      <h4>Dostarczona</h4>
+          <h4>Błąd adresu</h4>
+         <h4>Pozostawiona w magazynie</h4>
+       <h4> W trakcie wyjaśniania</h4>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+  </tr>
+  <tr>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>
+    <FORM
+  <p align="center"><input name='query' type=text size=22></p>
+  <p align="center"><input type="submit" value="Szukaj" </p>
+
+    </FORM>
+    </td>
+  </tr>
+</table>
+
+
+
+    </center>
+
+{% endblock %}
+
+</body>
+</html>

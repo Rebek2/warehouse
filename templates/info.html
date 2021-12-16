@@ -6,20 +6,19 @@
 <center>
 
 
-    <h3>Dodaj przesyłke</h3>
-<form action=""  method = "POST">
+<h1>Przesyłki:</h1>
+    <h2>Ilość przesyłek o podanym statusie '{{ status}}':  {{ ilosc }} </h2>
+<h2>Przesyłki:</h2>
+{% for parcel in data %}
+       <h6>{{ parcel.parcel_number }}| Dodano: {{ parcel.dateStatus }} </h6>
 
-        {% csrf_token %}
-    <center>
+    {% endfor %}
 
+        <h2><a class="nav-link" href="{% url 'statystyki' %}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Wróć</span></a></h2>
+      </li>
 
-
-        <h3>Dane nadawcy:</h3>
-        {{ form.as_ul }}
-
-    <input type = 'submit'>
-    </center>
-</form>
 </center>
 
 {% endblock %}

@@ -53,6 +53,7 @@ def search(request):
             parcel = Parcel.objects.get(parcelnumber__exact = query)
             return redirect(udaneNadanie,parcel.parcelnumber,parcel.id)
         except:
+            query = request.GET.get('query')
             return render(request,'szukaj.html')
 
 
@@ -61,7 +62,9 @@ def dodaj_status(request):
         status = StatusForm(request.POST)
         if status.is_valid():
             status.save()
-        return redirect(dodaj_status)
+
+
+            return redirect(dodaj_status)
     else:
         status=StatusForm()
         return render(request,'status.html',{'status':status})
@@ -106,3 +109,15 @@ def list_przewozowy(request,pk):
     if pisa_status.err:
         return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
+
+
+
+def statystyki(request):
+    if request.method == "GET":
+        query = request.GET.get('query')
+        if request.GET.get('query')!= None:
+            data = ParcelStatus.objects.all().filter(status_c__contains=query).order_by('-dateStatus')
+            ilosc = len(data)
+            status = query
+            return render(request,'info.html',{"data":data,"ilosc":ilosc,'status':status})
+        return render(request, 'stats.html')
