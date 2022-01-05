@@ -1,18 +1,11 @@
 {% extends 'index.html' %}
-<style>
-		#messages{
-			background-color: grey;
-			color: #fff;
-			padding: 10px;
-			margin-top: 10px;
-		}
-	</style>
+
 
 {% block content %}
 
 
     <center>
-<h2>Szukaj przesyłki</h2>
+<h2>Znajdź przesyłkę, którą chcesz przekierować</h2>
 
 <table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
@@ -20,27 +13,24 @@
   <tr>
     <td> </td>
   </tr>
+
   <tr>
     <td>
     <FORM
   <p align="center"><input name='query' type=text size=60></p>
+  <p align="center"><input type="submit" class="btn btn-primary" value="Szukaj"> </p>
 
-
-
-
-  <p align="center"><input type="submit" value="Szukaj"> </p>
-
-  </ul>
     </FORM>
     </td>
-
   </tr>
 </table>
+
 				{% for message in messages %}
 					<p id="messages">{{message}}</p>
 				{% endfor %}
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
+
     </center>
 
 {% endblock %}

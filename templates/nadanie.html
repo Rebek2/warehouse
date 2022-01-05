@@ -7,15 +7,16 @@
 
 
     <h1>Dodaj przesyłke</h1>
-<form  method = "POST">
+<form  method = "post" action="" >
     {% csrf_token %}
 
-      {{ form.as_p }}
+      {% include 'blad.html' with form=form %}
+
     <h2>Odbiorca</h2>
-    {{ receiver.as_p }}
+    {% include 'blad.html' with form=receiver %}
     <h2>Nadawca</h2>
-    {{ sender.as_p }}
-    <input type = 'submit'>
+    {% include 'blad.html' with form=sender %}
+    <button type="submit" class="btn btn-primary">Wyślij</button>
 </form>
 </center>
 {% endblock %}

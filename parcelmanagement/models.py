@@ -23,22 +23,24 @@ class Customer(models.Model):
 #Status przesyłek (w relacji many to one czyli wiele statusów do 1 przesyłki),
 # które będzie mógł aktualizować pracownik, będą wyświetlane od najnowszego do najstarszego
 class ParcelStatus(models.Model):
-    STATUS_CHOICE = (("Nadano","Nadano"),
-                     ("W drodze","W drodze"),
-                     ("Uszkodzona","Uszkodzona"),
-                     ("Zniszczona całkowicie","Zniszczona całkowicie"),
-                     ("Dostarczona","Dostarczona"),
-                     ("Błąd adresu","Błąd adresu"),
-                     ("Pozostawiona w magazynie","Pozostawiona w magazynie"),
-                     ("W trakcie wyjaśniania","W trakcie wyjaśniania",))
+    STATUS_CHOICE = (("01 : Nadano","01 : Nadano"),
+                     ("02 : W drodze","02 : W drodze"),
+                     ("03 : Uszkodzona","03 : Uszkodzona"),
+                     ("04 : Zniszczona całkowicie","04 : Zniszczona całkowicie"),
+                     ("05 : Dostarczona","05 : Dostarczona"),
+                     ("06 : Błąd adresu","06 : Błąd adresu"),
+                     ("07 : Pozostawiona w magazynie","07 : Pozostawiona w magazynie"),
+                     ("08 : W trakcie wyjaśniania","08 : W trakcie wyjaśniania",),
+                     ("09 : Przekierowana","09 : Przekierowana", ),)
 
     status_c = models.CharField(max_length=300,choices=STATUS_CHOICE)
     status_details = models.CharField(max_length=200, blank=True)
     dateStatus = models.DateTimeField(auto_now_add=True)
-
+    added = models.CharField(max_length=100)
     parcel_number = models.ForeignKey('Parcel', on_delete=models.CASCADE)
     class Meta:
-        ordering = ('-dateStatus',)
+        ordering = ('-dateStatus','parcel_number')
+
     def __str__(self):
         return str(f'{self.parcel_number} {self.status_c}')
 #Model samej przesyki gdzie generowany jest numer przesyłki UUID - można później zmienić

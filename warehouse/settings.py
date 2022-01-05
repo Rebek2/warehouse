@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'parcelmanagement'
+    'parcelmanagement',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,4 @@ STATICFILES_DIRS = ['STATICDIRECTORY']
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

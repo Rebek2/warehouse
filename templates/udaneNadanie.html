@@ -25,7 +25,7 @@
     <h3>Status przesyłki:</h3>
         {% for status in statusy %}
             <h1>------------------------------------------------</h1>
-    <h5>{{ status.status_c }} |  Data:    {{ status.dateStatus }}</h5>
+    <h5>{{ status.status_c }} |Data:    {{ status.dateStatus }}|| Dodano przez: {{ status.added }}</h5>
             <h6>Szczegóły : {{ status.status_details }}</h6>
     {% endfor %}
   </center>

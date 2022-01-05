@@ -5,16 +5,12 @@
 
 
 
-<form method="POST">
-<center>
-{% csrf_token %}
+<form method="post" >
+  {% csrf_token %}
 
-{{ status.as_p }}
-
-<input type = 'submit' >
-    </center>
+  {% include 'blad.html' with form=status %}
+  <button type="submit" class="btn btn-primary">Dodaj</button>
 </form>
-
 
 
 {% endblock %}
