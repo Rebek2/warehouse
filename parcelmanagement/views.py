@@ -3,27 +3,27 @@ from django.shortcuts import render, redirect,get_object_or_404
 from barcode.writer import ImageWriter
 from .forms import ParcelForm, SenderForm, ReceiverForm,StatusForm,StatusForm2,ParcelprzForm
 from .models import Parcel,Customer, ParcelStatus
-
+from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
-
+from .forms import CreateUserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-
+from .decorators import unauthenticated_user, allowed_users
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.models import Group
+from django.contrib.auth.models import User,auth
 #login i logout
+
 def loginPage(request):
 
         if request.method == 'POST':
             username = request.POST.get('username')
             password = request.POST.get('password')
-
-            user = authenticate(request, username=username, password=password)
-
+            user = auth.authenticate(request, username=username, password=password)
             if user is not None:
-                login(request, user)
+                auth.login(request, user)
                 return redirect('home')
             else:
                 messages.info(request, 'Login lub hasło są nieprawidłowe ')
@@ -33,16 +33,9 @@ def loginPage(request):
 
 
 def logoutUser(request):
-    logout(request)
-    return redirect(login)
+    auth.logout(request)
+    return redirect(loginPage)
 
-
-
-
-
-
-
-#Testowanie views
 @login_required(login_url='login')
 def home(request):
     return render(request,'index.html')
@@ -72,6 +65,32 @@ def dodaj(request):
         receiver = ReceiverForm(prefix = 'receiver')
         form = ParcelForm()
         return render(request, 'nadanie.html', {'form':form,'receiver':receiver,'sender':sender})
+
+@login_required(login_url='login')
+
+def registerPage(request):
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit = False)
+            username = form.cleaned_data.get('username')
+            if User.objects.filter(username=user.username).count()>0:
+                return HttpResponse('Login zajęty!')
+
+            else:
+                user.save()
+                group = Group.objects.get(name='Employee')
+                user.groups.add(group)
+
+                messages.success(request, 'Konto stworzone dla: ' + username)
+
+            return redirect(registerPage)
+    else:
+        form = CreateUserForm()
+        context = {'form': form}
+        return render(request, 'register.html', context)
+
+
 
 @login_required(login_url='login')
 def udaneNadanie(request,number,pk):

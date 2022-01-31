@@ -15,6 +15,7 @@ urlpatterns = [
     path('statystyki/',views.statystyki,name='statystyki'),
     path('przekieruj/',views.szukaj_prz,name = 'przekieruj'),
     path('przekierowanie/<str:number>/<int:pk>',views.przekierowanie,name = 'przekierowanie'),
+    path('rejestracja/',views.registerPage,name='registerpage'),
 
 
 

@@ -1,10 +1,10 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"></html>
 
 {% load static %}
 
-</style>
-
+{% load auth_extras %}
 <head>
 
   <meta charset="utf-8">
@@ -13,7 +13,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin - Dashboard</title>
+  <title>Magazyn kurierski</title>
 
 
   <!-- Custom fonts for this template-->
@@ -45,7 +45,7 @@
 
         <span class="hello-msg"><p style ='color:#ffffff'> Profil pracownika: {{request.user}}</span></p>
 
-          <span><a href={% url 'login' %} data-toggle="modal" >Wyloguj</a></span>
+          <span><a href={% url 'logout' %} data-toggle="modal" >Wyloguj</a></span>
         </div>
       </li>
 
@@ -87,6 +87,7 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Dodaj status</span></a>
       </li>
+
               </li>
               <li class="nav-item">
         <a class="nav-link" href="{% url 'statystyki' %}">
@@ -97,7 +98,17 @@
         <a class="nav-link" href="{% url 'przekieruj' %}">
           <i class="fas fa-fw fa-table"></i>
           <span>Przekieruj przesyłkę</span></a>
+
       </li>
+{% if request.user|has_group:"Employee" %}
+
+                      <li class="nav-item">
+        <a class="nav-link" href="{% url 'registerpage' %}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Rejestruj pracownika</span></a>
+
+      </li>
+        {% endif %}
     </ul>
 
     <!-- /.content-wrapper -->
