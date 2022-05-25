@@ -1,0 +1,20 @@
+#lewo
+{
+	float: left;
+	width: 450px;
+	text-align: center;
+	min-height: 280px;
+}
+
+#prawo
+{
+	float: left;
+	width: 45px;
+	text-align: center;
+	min-height: 280px;
+}
+
+h2
+{
+	color:white;
+}

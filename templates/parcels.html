@@ -3,6 +3,7 @@
 
 {% block content %}
     <center>
+
 <h2>Ostatnio nadane przesyłki   </h2>
     {% for parcel in Przesyłki %}
         <h2><a href = "{% url 'udaneNadanie' pk=parcel.id number=parcel.parcelnumber   %}">{{ parcel }}</a></h2>

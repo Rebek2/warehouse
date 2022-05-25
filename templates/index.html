@@ -43,7 +43,8 @@
 
         </a>
 
-        <span class="hello-msg"><p style ='color:#ffffff'> Profil pracownika: {{request.user}}</span></p>
+        <span class="hello-msg"><p style ='color:#ffffff'> Profil pracownika: {{request.user}}
+        </span></p>
 
           <span><a href={% url 'logout' %} data-toggle="modal" >Wyloguj</a></span>
         </div>
@@ -100,7 +101,7 @@
           <span>Przekieruj przesyłkę</span></a>
 
       </li>
-{% if request.user|has_group:"Employee" %}
+{% if request.user|has_group:"admin" %}
 
                       <li class="nav-item">
         <a class="nav-link" href="{% url 'registerpage' %}">
@@ -113,12 +114,46 @@
 
     <!-- /.content-wrapper -->
 {% block content %}
+    <body onload="zegarek()">
     <center>
-    <h1>Strona do zarządzania magazynem kurierskim</h1>
-<h2> Witaj {{ request.user }}</h2>
+
+
+    <h2><script>
+        function zegarek()
+        {
+            var data = new Date();
+            var godzina = data.getHours();
+            var minuta = data.getMinutes();
+            var sekunda = data.getSeconds();
+            var dzien = data.getDate();
+            var dzienN = data.getDay();
+            var miesiac = data.getMonth();
+            var rok = data.getFullYear();
+            if (godzina < 10) godzina = '0' + godzina;
+            if (minuta < 10) minuta = "0" + minuta;
+            if (sekunda < 10) sekunda = "0" + sekunda;
+
+            var dni = new Array("niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota");
+            var miesiace = new Array("stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia");
+
+            var pokazDate = "Dzisiaj jest " + dni[dzienN] + ', ' + dzien + ' ' + miesiace[miesiac] + ' ' + rok + " roku.<br />Godzina " + godzina + ':' + minuta + ':' + sekunda;
+            document.getElementById("zegar").innerHTML = pokazDate;
+
+            setTimeout(zegarek, 1000);
+        }
+    </script></h2>
      </center>
+
+<h2><div id="zegar"</h2>
+
+
+
+
+    </div>
+    </body>
+    </div>
  {% endblock %}
-  </div>
+
   <!-- /#wrapper -->
 
   <!-- Scroll to Top Button-->

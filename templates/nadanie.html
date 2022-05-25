@@ -11,11 +11,18 @@
     {% csrf_token %}
 
       {% include 'blad.html' with form=form %}
+    <table>
+        <thead>
+        <th><h2>Odbiorca</h2></th>
+        <th><h2>Nadawca</h2></th>
+        </thead>
+        <tr>
 
-    <h2>Odbiorca</h2>
-    {% include 'blad.html' with form=receiver %}
-    <h2>Nadawca</h2>
-    {% include 'blad.html' with form=sender %}
+            <td>{% include 'blad.html' with form=receiver %}</td>
+
+            <td>{% include 'blad.html' with form=sender %}</td>
+        </tr>
+    </table>
     <button type="submit" class="btn btn-primary">Wyślij</button>
 </form>
 </center>

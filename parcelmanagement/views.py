@@ -17,7 +17,6 @@ from django.contrib.auth.models import User,auth
 #login i logout
 
 def loginPage(request):
-
         if request.method == 'POST':
             username = request.POST.get('username')
             password = request.POST.get('password')
@@ -67,7 +66,7 @@ def dodaj(request):
         return render(request, 'nadanie.html', {'form':form,'receiver':receiver,'sender':sender})
 
 @login_required(login_url='login')
-
+@allowed_users(allowed_roles=['admin'])
 def registerPage(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
@@ -208,13 +207,11 @@ def przekierowanie(request,number,pk):
         parcel1 = Parcel()
         receiver = ReceiverForm(request.POST,prefix = 'receiver')
         if receiver.is_valid():
-
             parcel1.Receiver = receiver.save()
             parcel1.Sender = parcel.Sender
             parcel1.price = parcel.price
             parcel1.product = parcel.product
             parcel1.description = parcel.description
-
             parcel1.save()
             status = ParcelStatus(status_c= '09 : Przekierowano',
                                   status_details='Przekierowana przez aplikacje webowa do {}'.format(parcel1.parcelnumber)

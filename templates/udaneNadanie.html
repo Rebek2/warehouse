@@ -1,9 +1,10 @@
-
 {% extends 'index.html' %}
+{% load static %}
 
+<link rel="stylesheet" type="text/css" href="{% static 'moj.css' %}"/>
 {% block content %}
     <center>
-<h2>Twój numer przesyłki to:</h2>
+<h2> Numer przesyłki to:</h2>
         <h2>{{ parcel1.parcelnumber }}</h2>
  <a href = "{% url 'list' pk=parcel1.id  %}">List przewozowy</a>
         <h6> ------------------------------------------------</h6>

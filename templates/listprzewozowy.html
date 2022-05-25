@@ -1,16 +1,39 @@
 {% load static %}
-<!doctype html>
-<html lang="en">
+
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'moj.css' %}"/>
+
+
+</head>
+<body>
+<style>
+    #lewo
+{
+	float: left;
+	width: 450px;
+	text-align: center;
+	min-height: 280px;
+}
+
+#prawo
+{
+	float: left;
+	width: 45px;
+	text-align: center;
+	min-height: 280px;
+}
+
+</style>
+<div>
     <center>
 <h1>Numer przesyłki: {{ parcel.parcelnumber }}</h1>
     </center>
-    <h2|Wartość: {{ parcel.price }}zł|</h2>
+    <h2>|Wartość: {{ parcel.price }}zł|</h2>
     <h2>|Typ przesyłki: {{ parcel.product }}|</h2>
+</div>
+<div id ="lewo">
 <h2>|Dane odbiorcy:</h2>
     <h2>|Imie: {{ parcel.Receiver.name }}|</h2>
     <h2>|Telefon: {{ parcel.Receiver.phone }}|</h2>
@@ -18,7 +41,9 @@
     <h2>|Miasto: {{ parcel.Receiver.City }}|</h2>
     <h2>|Kod pocztowy: {{ parcel.Receiver.PostalCode }}|</h2>
     <h2>|Adres Email: {{ parcel.Receiver.EmailAdress }}|</h2>
-    <h2>----------------------------------------------</h2>
+</div>
+<div id = "prawo">
+
     <h2>Dane nadawcy:</h2>
     <h2>|Imie: {{ parcel.Sender.name }}|</h2>
     <h2>|Telefon: {{ parcel.Sender.phone }}|</h2>
@@ -28,12 +53,11 @@
     <h2>|Adres Email: {{ parcel.Sender.EmailAdress }}|</h2>
       <h2>----------------------------------------------</h2>
     <h2>|Uwagi: {{ parcel.description }}|</h2>
-
-
+</div>
+<div>
     <h1>BARCODE</h1>
     <img src={{ number }} >
-</head>
-<body>
+</div>
 
 </body>
 </html>
